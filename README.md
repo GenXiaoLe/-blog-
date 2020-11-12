@@ -1,2 +1,2 @@
-# -blog-
-基于VuePress的个人学习blog
+### 个人blog
+> 基于VuePress的个人学习blog，除了记录学习知识之外，练习网络部署以及自动化部署

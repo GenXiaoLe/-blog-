@@ -4,32 +4,25 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '主页', link: '/' },
-      { text: '博文',
-        items: [
-          { text: 'Android', link: '/android/' },
-          { text: 'ios', link: '/ios/' },
-          { text: 'Web', link: '/web/' }
-        ] 
-      },
       { text: '关于', link: '/about/' },
       { text: 'Github', link: 'https://github.com/GenXiaoLe' },
     ],
     sidebar: [
       {
-        title: 'android',
-        path: '/android/',
+        title: 'node基础',
+        path: '/nodeBasis/',
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 6,    // 可选的, 默认值是 1
       },
       {
-        title: 'ios',
-        path: '/ios/',
+        title: 'vue2基础',
+        path: '/vue2Basis/',
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 6,    // 可选的, 默认值是 1
       },
       {
-        title: 'web',
-        path: '/web/',
+        title: '个人拓展文章',
+        path: '/article/',
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 6,    // 可选的, 默认值是 1
       },
