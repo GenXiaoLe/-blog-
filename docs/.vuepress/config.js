@@ -21,6 +21,12 @@ module.exports = {
         sidebarDepth: 6,    // 可选的, 默认值是 1
       },
       {
+        title: '项目应用',
+        path: '/project/',
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 6,    // 可选的, 默认值是 1
+      },
+      {
         title: '个人拓展文章',
         path: '/article/',
         collapsable: false, // 可选的, 默认值是 true,
