@@ -1,10 +1,18 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-09 17:51:31
+ * @LastEditTime: 2020-11-19 17:27:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /blog/docs/.vuepress/config.js
+ */
 module.exports = {
-  title: '梁亚根的博客',
-  description: '梁亚根的博客',
+  title: '梁亚根的技术分享',
+  description: '前端知识记录分享',
   themeConfig: {
     nav: [
       { text: '主页', link: '/' },
-      { text: '关于', link: '/about/' },
+      { text: 'Segmentfault主页', link: 'https://segmentfault.com/u/yagenl' },
       { text: 'Github', link: 'https://github.com/GenXiaoLe' },
     ],
     sidebar: [
@@ -24,6 +32,12 @@ module.exports = {
         title: '项目应用',
         path: '/project/',
         collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 6,   // 可选的, 默认值是 1
+      },
+      {
+        title: '服务端部署',
+        path: '/webProject/',
+        collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 6,    // 可选的, 默认值是 1
       },
       {
@@ -35,5 +49,8 @@ module.exports = {
     ],
     sidebarDepth: 1,
     lastUpdated: 'Last Updated', 
+  },
+  markdown: {
+    lineNumbers: true
   }
 }
