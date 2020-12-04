@@ -14,3 +14,6 @@
 9. 在github进行设置，得到token：b301e05beb0ca90fbec24523a3cdb66dbdd4ecbb
 10. jenkins创建任务
 11. 再次启动 docker start [id/name]
+
+
+## Jenkins使用
