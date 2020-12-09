@@ -47,7 +47,7 @@ module.exports = {
         sidebarDepth: 6,    // 可选的, 默认值是 1
       },
     ],
-    sidebarDepth: 1,
+    sidebarDepth: 6,
     lastUpdated: 'Last Updated', 
   },
   markdown: {
