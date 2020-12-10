@@ -174,10 +174,233 @@ rm -rf path
 | ------------- |:-------------:|
 | path    | 文件路径  |
 
+## Pm2
+- 日志管理：应用程序日志保存在服务器的硬盘中~/.pm2/logs/
+
+- 负载均衡：PM2可以通过创建共享同一服务器端口的多个子进程来扩展您的应用程序。这样做还允许您以零秒停机时间重新启动应用程序。
+
+- 终端监控：可以在终端中监控您的应用程序并检查应用程序运行状况（CPU使用率，使用的内存，请求/分钟等）。
+
+- SSH部署：自动部署，避免逐个在所有服务器中进行ssh。
+
+- 静态服务：支持静态服务器功能
+
+- 多平台支持：适用于Linux（稳定）和macOS（稳定）和Windows（稳定）
+
+### pm2安装（全局）
+```shell
+# npm安装
+npm install pm2 -g
+# mac 系统：添加sudo
+
+# yarn安装
+yarn global add pm2
+```
+
+### 启动服务
+```shell
+pm2 start app.js                # 启动app.js应用
+pm2 start app.js --name demo    # 启动应用并设置name
+pm2 start app.sh                # 脚本启动
+```
+
+### 监听服务
+```shell
+pm2 start app.js --watch    # 当文件发生变化，自动重启
+```
+
+### 查看启动列表
+```shell
+pm2 list
+```
+
+### 日志查看
+```shell
+pm2 logs            # 查看所有应用日志
+pm2 logs [Name]     # 根据指定应用名查看应用日志
+pm2 logs [ID]       # 根据指定应用ID查看应用日志
+```
+
+### 停止服务
+```shell
+pm2 stop all               # 停止所有应用
+pm2 stop [AppName]         # 根据应用名停止指定应用
+pm2 stop [ID]              # 根据应用id停止指定应用
+```
+
+### 重启应用
+```shell
+pm2 restart app.js        # 重启app.js进程
+pm2 restart all           # 重启所有进程
+```
+
+## Nginx
+nginx (engine x) 是一个高性能的HTTP和反向代理服务，也是一个IMAP/POP3/SMTP服务
+
+### 安装依赖
+```shell
+yum -y install gcc-c++  
+yum -y install pcre pcre-devel  
+yum -y install zlib zlib-devel  
+yum -y install openssl openssl--devel
+```
+
+### 下载
+```shell
+wget -c https://nginx.org/download/nginx-1.14.0.tar.gz
+```
+
+### 解压
+```shell
+tar -zxvf nginx-1.14.0.tar.gz
+cd nginx-1.14.0
+```
+
+### 使用默认配置
+```shell
+./configure
+```
+
+### 编译安装
+```shell
+make
+make install
+```
+
+### 找到nginx路径
+```shell
+whereis nginx
+# /usr/local/nginx
+```
+
+### 启动
+```shell
+cd /usr/local/nginx/sbin/
+./nginx :启动
+./nginx -s stop # 此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程
+./nginx -s quit # 此方式停止步骤是待nginx进程处理任务完毕进行停止。
+./nginx -s reloa # 重启
+```
+
+### 重启nginx
+```shell
+cd /usr/local/nginx/sbin/
+./nginx -s quit
+./nginx
+```
+
+:::tip
+此时，nginx安装启动完毕，我们可以通过服务器IP访问我们的网站了！！！
+需要注意的一点是，nginx默认部署在80端口，服务器一定要注意开放80端口
+:::
+
 
 ## 服务端部署
+上面我们已经学到了linux的基本使用和Nginx的安装配置，下面我们开始部署自己的前端服务。首先我们以CentOS7+服务器为例，先看一下默认网站目录
 
-## Pm2启动node服务
+```shell
+# 这个html目录就是默认nginx网站存放目录
+/usr/local/nginx/html
+```
+
+### 本地文件上传至服务器
+首先我们需要把我们的前端项目进行build构建，我们需要把构建后的dist文件部署到服务器指定位置上
+
+```shell
+# 本地shell
+scp -r xxx/xxx/xxx/dist root@服务器ip: /usr/local/nginx/html
+```
+
+:::tip
+scp上传文件到服务器是在我们本地电脑运行命令，不是登录服务器!!!
+:::
+
+### 打开配置文件
+
+```shell
+vim /usr/local/nginx/conf/nginx.conf
+```
+
+文件内参数
+| 参数        | 含义           |
+| ------------- |:-------------:|
+| main    | 用于进行nginx全局信息的配置  |
+| events    | 用于nginx工作模式的配置  |
+| http    | 用于进行http协议信息的一些配置  |
+| http->server    | 用于进行服务器访问信息的配置  |
+| http->location    | 用于进行访问路由的配置  |
+| upstream    | 用于进行负载均衡的配置  |
+
+### 进行文件配置
+
+```shell
+# 这里我时候用的是root用户，正常情况下是不可取的
+# 配置用户或者组，默认为nobody nobody
+user  root;
+
+# 允许许生成的进程数，默认为1
+worker_processes  2;
+
+# 制定日志路径，级别
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+# 指定nginx进程运行文件存放地址
+#pid        logs/nginx.pid;
+
+
+events {
+    # 最大连接数，默认为512
+    worker_connections  1024;
+}
+
+
+http {
+    # 文件扩展名与文件类型映射表
+    include       mime.types;
+    # 默认文件类型，默认为text/plain
+    default_type  application/octet-stream;
+
+    # 日志服务的设置
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    # 允许sendfile方式传输文件，默认为off
+    sendfile        on;
+    # 让nginx在一个数据包中发送所有的头文件，而不是一个一个单独发
+    #tcp_nopush     on;
+
+    # 连接超时时间
+    keepalive_timeout  65;
+    # 开启gzip压缩
+    gzip  on;
+
+    # 服务1
+    server {
+        # 监听的端口
+        listen       80;
+        # 用于配置路由访问信息
+        location / {
+           # 指定ip地址或者域名，多个配置之间用空格分隔
+           server_name  xxx.xxx.com;
+           # 网站存储地址
+           root html/dist;
+           # 用户访问web网站时的全局首页
+           index index.html index.htm;
+        }
+    }
+}
+```
+
+### 重启
+```shell
+cd /usr/local/nginx/sbin/
+./nginx -s reload
+```
 
 ## Docker使用
 Docker是一款以容器虚拟化技术为基础的软件。为程序跨平台兼容而生，将虚拟化应用于资源管理，是一个由 Go 语言实现的容器引擎。
