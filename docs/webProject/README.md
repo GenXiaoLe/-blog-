@@ -295,7 +295,7 @@ cd /usr/local/nginx/sbin/
 :::
 
 
-## 服务端部署
+## 服务端部署前端服务
 上面我们已经学到了linux的基本使用和Nginx的安装配置，下面我们开始部署自己的前端服务。首先我们以CentOS7+服务器为例，先看一下默认网站目录
 
 ```shell
@@ -401,6 +401,106 @@ http {
 cd /usr/local/nginx/sbin/
 ./nginx -s reload
 ```
+
+## 服务端部署node服务
+这里我们主要实战一下pm2+nginx反向代理，部署后端服务
+
+### 本地文件上传至服务器
+首先我们需要把我们的前端项目进行build构建，我们需要把构建后的dist文件部署到服务器指定位置上
+
+```shell
+# 本地shell
+scp -r /xxx/serve root@服务器ip: /usr/local/nginx/html
+```
+
+:::tip
+scp上传文件到服务器是在我们本地电脑运行命令，不是登录服务器!!!
+:::
+
+### 监听node服务
+```shell
+pm2 start xxx/serve/app.js --watch    # 当文件发生变化，自动重启
+```
+
+:::tip
+app.js就是我们写的接口，记得在服务器上开启启动的相应端口
+:::
+
+### Nginx反向代理node服务
+
+```shell
+# 这里我时候用的是root用户，正常情况下是不可取的
+# 配置用户或者组，默认为nobody nobody
+user  root;
+
+# 允许许生成的进程数，默认为1
+worker_processes  2;
+
+# 制定日志路径，级别
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+# 指定nginx进程运行文件存放地址
+#pid        logs/nginx.pid;
+
+
+events {
+    # 最大连接数，默认为512
+    worker_connections  1024;
+}
+
+
+http {
+    # 文件扩展名与文件类型映射表
+    include       mime.types;
+    # 默认文件类型，默认为text/plain
+    default_type  application/octet-stream;
+
+    # 日志服务的设置
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    # 允许sendfile方式传输文件，默认为off
+    sendfile        on;
+    # 让nginx在一个数据包中发送所有的头文件，而不是一个一个单独发
+    #tcp_nopush     on;
+
+    # 连接超时时间
+    keepalive_timeout  65;
+    # 开启gzip压缩
+    gzip  on;
+
+    # 服务1
+    server {
+        # 监听的端口
+        listen       80;
+        # 用于配置路由访问信息
+        location / {
+           # 指定ip地址或者域名，多个配置之间用空格分隔
+           server_name  xxx.xxx.com;
+           # 网站存储地址
+           root html/dist;
+           # 用户访问web网站时的全局首页
+           index index.html index.htm;
+        }
+
+        # 将/api/反向代理至当前端口
+        location /api/ {
+           # 代理到的服务器端口
+           proxy_pass http://xxx.xxx.xx:8080/;
+           proxy_redirect off;
+        }
+    }
+}
+```
+
+:::tip
+serve的js启动服务器的服务端口，就是nginx需要配置的反向代理端口，在前端请求时只需要使用/api/xxxx就可以进行代理请求，实现跨域。vue-cli中的proxy也是这个原理
+:::
 
 ## Docker使用
 Docker是一款以容器虚拟化技术为基础的软件。为程序跨平台兼容而生，将虚拟化应用于资源管理，是一个由 Go 语言实现的容器引擎。
@@ -689,14 +789,151 @@ docker pull jenkins
 
 
 ## Jenkins使用
-1. 安装docker
-2. 服务器安装java8
-3. 安装镜像jenkins(不要使用官方jenkins 版本太低、使用jenkins/jenkins)
-4. 启动容器 8080端口指向8000，容器命名为reina-jenkins，使用镜像jenkins/jenkins：docker run --name reina-jenkins -p 8000:8080 -p 50000:50000 jenkins/jenkins
-5. 打开8000端口，复制logs中的用户密码 登录，选择推荐插件进行安装
-6. 创建用户
-7. 系统设置->插件管理->高级设置、替换站点https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json并保存
-8. 可选插件，搜索github和git进行安装
-9. 在github进行设置，得到token：b301e05beb0ca90fbec24523a3cdb66dbdd4ecbb
-10. jenkins创建任务
-11. 再次启动 docker start [id/name]
+以上我们学习了前端的部署，node服务的部署，docker的基本使用，那么我们就可以开始我们的服务持续集成的最后一步，jenkins的使用
+
+### 安装java8
+
+- 可以先查看可安装java版本。
+
+```shell
+yum -y list java**
+```
+
+- 因为我们的机器是64位的，所以选择安装java-1.8.0-openjdk-devel.x86_64，耐心等待至自动安装完成
+
+```shell
+yum install -y java-1.8.0-openjdk-devel.x86_64
+```
+
+- 查看安装的版本，检查是否安装成功
+
+```shell
+java -version
+```
+
+- 查看安装的路径
+
+```shell
+1rpm -ql java-1.8.0-openjdk
+
+# 目录一般是 /usr/lib/jvm
+```
+
+### 安装镜像jenkins
+
+:::tip
+因为官方jenkins镜像已经停止维护，一些插件无法安装，所以建议不要使用官方jenkins、使用中文版的jenkins/jenkins
+:::
+
+```shell
+docker pull jenkins/jenkins
+```
+
+### 启动jenkins容器
+
+```shell
+# 把jenkins/jenkins重新命名为reina-jenkins，并代理制8080端口启动
+docker run --name reina-jenkins -p 8000:8080 -p 50000:50000 jenkins/jenkins
+```
+
+### 查看容器的运行状态
+
+```shell
+docker ps
+```
+
+:::tip
+因为我们使用的是8080端口，记得在服务器上配置好哦
+:::
+
+### jenkins的关闭&重新启动
+
+```shell
+# 关闭
+docker stop [id/name]
+
+# 再次启动
+docker start [id/name]
+```
+
+### 初始化配置jenkins
+第一次进入需要输入jenkins容器密码，那么这个密码是什么呢？我们一步一步来看
+
+- **打印容器中的信息，获取初始化登录密码**
+
+```shell
+docker logs -f reina-jenkins
+```
+
+<img :src="$withBase('/imgs/pwd.jpg')" alt="mixureSecure">
+
+- **第一次进入需要进行安装和初始化，选择install**
+<img :src="$withBase('/imgs/install.jpg')" alt="mixureSecure">
+
+- **接着会自动进行插件安装，因没有配置代理，安装失败可暂时忽略**
+<img :src="$withBase('/imgs/start.jpg')" alt="mixureSecure">
+
+- **创建用户并登陆**
+输入相应信息
+
+- **登陆成功后，配置Jenkins代理**
+路径：系统设置->插件管理->高级设置->升级站点
+
+```
+# 替换为该站点并保存
+https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
+```
+
+- **安装插件**
+
+系统管理 -> 管理插件 -> 可选插件，可参考初始登陆时推荐安装的插件进行选择。因为要配置Jenkins从GitHub自动拉取代码，因此必须安装Git和GitHub。
+
+- **github中token获取**
+
+登陆GitHub，依次选择settings - developer settings - personal access tokens - generate new token，选择如下选项（repo和admin: repo_hook）后生成token（记得复制，每个token只能显示一次）
+
+- **github更新通知jenkins**
+
+登录要自动部署的项目，Settings -> Webhooks -> 右上角Add webhook -> Payload URL中输入jenkins地址(http://<jenkins地址>/github-webhook/) -> 保存
+
+- **在Jenkins，创建构建任务**
+  - 自定义任务名称 输入任务名称。并选择构建一个自由风格的项目
+  - ​创建完成后进入配置页面，选则GitHub项目，并输入Github的URL
+  - ​源码管理中，选择Git，填入对应仓库URL
+  - ​添加Credentials，选择类型为Secret Text，在Secret处填入github中生成的token
+  - 指定需要构建的分支，默认为master(github目前新分支改为了main)，并选择构建触发时机，此处我勾选的是代码提交时自动触发
+  - 为了测试配置是否成功，下面配置构建脚本，打印‘Hello World’
+
+:::tip
+到这里我们已经完成了一大半了，github提交代码的时候 会自动触发jenkins的构建，可以试验一下
+:::
+
+### jenkins构建部署至服务器
+我们使用自定义linux命令的方式部署到服务器上
+
+- **安装插件**
+和上面安装插件的方式一样，安装Publish Over SSH
+
+- **配置服务器地址**
+回到jenkins首页，系统管理 -> 系统配置 -> 找到Publish over SSH
+
+配置参数
+| 参数        | 含义           |
+| ------------- |:-------------:|
+| name    | 选项的名字，随意起  |
+| Hostname    | 服务器的地址  |
+| Username    | 用户名，一般是root  |
+| Remote Directory    | 根目录，一般输入/  |
+
+- **进行配置**
+ - 进入到jenkins的项目配置中，找到构建环境，选择Send files or execute commands over SSH after the build runs
+ - Name选择刚才配置好的选项
+ - Source files 源文件名
+ - Remote directory 移动到服务器的目录
+ - Exec command 部署完之后的操作，可以直接写入linux指令
+ - 保存应用
+
+
+:::tip
+至此，我们docker+jenkins+github的项目持续集成就可以了，可以push文件到github进行试验了。
+:::
