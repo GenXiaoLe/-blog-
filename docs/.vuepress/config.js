@@ -7,7 +7,7 @@
  * @FilePath: /blog/docs/.vuepress/config.js
  */
 module.exports = {
-  title: '梁亚根的技术分享',
+  title: '小乐的技术分享',
   description: '前端知识记录分享',
   themeConfig: {
     nav: [
