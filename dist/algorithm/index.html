@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端算法篇 | 小乐的技术分享</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="前端知识记录分享">
+    
+    <link rel="preload" href="/assets/css/0.styles.afc64ad8.css" as="style"><link rel="preload" href="/assets/js/app.675bda22.js" as="script"><link rel="preload" href="/assets/js/2.3a20e52e.js" as="script"><link rel="preload" href="/assets/js/8.d00f70be.js" as="script"><link rel="prefetch" href="/assets/js/10.b671f00c.js"><link rel="prefetch" href="/assets/js/11.d96dddca.js"><link rel="prefetch" href="/assets/js/12.426c675b.js"><link rel="prefetch" href="/assets/js/13.8b1fc4d4.js"><link rel="prefetch" href="/assets/js/3.f81a9445.js"><link rel="prefetch" href="/assets/js/4.95de2f6c.js"><link rel="prefetch" href="/assets/js/5.ab5d39e7.js"><link rel="prefetch" href="/assets/js/6.11849f16.js"><link rel="prefetch" href="/assets/js/7.2bd4d498.js"><link rel="prefetch" href="/assets/js/9.4b8c5ba7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.afc64ad8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">小乐的技术分享</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="https://segmentfault.com/u/yagenl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Segmentfault主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/GenXiaoLe" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="https://segmentfault.com/u/yagenl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Segmentfault主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/GenXiaoLe" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/nodeBasis/" class="sidebar-link">node基础</a></li><li><a href="/vue2Basis/" class="sidebar-link">vue2基础</a></li><li><a href="/project/" class="sidebar-link">项目应用</a></li><li><a href="/webProject/" class="sidebar-link">服务端部署</a></li><li><a href="/algorithm/" aria-current="page" class="active sidebar-link">前端算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/algorithm/#前端算法篇" class="sidebar-link">前端算法篇</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/algorithm/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/algorithm/#数据结构-数组" class="sidebar-link">数据结构-数组</a></li><li class="sidebar-sub-header"><a href="/algorithm/#数据结构-字符串" class="sidebar-link">数据结构-字符串</a></li><li class="sidebar-sub-header"><a href="/algorithm/#数据结构-链表" class="sidebar-link">数据结构-链表</a></li></ul></li></ul></li><li><a href="/article/" class="sidebar-link">个人拓展文章</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前端算法篇"><a href="#前端算法篇" class="header-anchor">#</a> 前端算法篇</h2> <h3 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h3> <p>小葵花妈妈课堂开课咯！</p> <p>数据结构对于我们来讲是很重要的一环，掌握数据结构以及使用也是作为程序员的必须要求，对于提升编程能力和代码质量有很大的作用。</p> <p>同时，随着数据结构的深入学习，我们绕不开的一环就是被称为编程中的修仙玄学：<strong>算法</strong>。</p> <p>我们这里主要以干货为主，也不整虚头巴脑的了，直接就从数据结构入手，在认识数据结构的同时，逐步进行基础的算法学习。</p> <p>奥利给，干就完了！</p> <h3 id="数据结构-数组"><a href="#数据结构-数组" class="header-anchor">#</a> 数据结构-数组</h3> <blockquote><p>万里长征第一步，咱们就从数组入手。数组是我们最经常接触的数据结构的一种，不管是栈还是队列的使用，都能在数组中体现，这些会在后续中介绍，我们先把数组当成开胃菜，简单地搞搞。</p></blockquote> <p>对于数组就不花费时间来介绍了，都是老熟人了。直接就上题目！</p> <h4 id="强大的指针"><a href="#强大的指针" class="header-anchor">#</a> 强大的指针</h4> <p>说起数据结构与算法，指针法可是业界公认的解题好手，我们这里先简单的认识一下指针，后续再做更多的应用！</p> <p>指针的主要作用是标记作用，用来标记某个结点，也被称作游标，最常用的是双指针法，对于复杂的问题也有多指针解法。</p> <p>双指针的用处很多，常用的有快慢指针法和对撞指针法。比如vue2中的diff算法，使用的是两对双指针对撞指针的算法。下面我们来做几道题感受一下指针的用处！</p> <p><strong>合并两个有序数组</strong></p> <p>我们现在有两个数组[1, 2, 3, 5]，[2, 4, 6]，我们要把两个数组合并成一个有序数组[1, 2, 2, 3, 4, 5, 6]。也不绕弯了，这道题标准解法就是双指针法，也是双指针法的基础用法。</p> <p>这里我们稍缓节奏，先缕一下思路：</p> <p>1.先对每个数组分别定义一个指针，指向数组的索引值0位。并声明一个空数组</p> <p>2.如果第一个指针的数字小于第二个指针的数字，则把第一个指针的数字push到空数组中，指针向前走一位。否则push第二个指针的数字，第二个指针向前走一位。如果相等，则都push进去，两个指针均向前一位。</p> <p>3.如果有一个数组已经先遍历完，另一个数组还有剩余，则直接push到数组最后面</p> <p>好了，思路有了，我们来实现代码</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">merge</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">nums1<span class="token punctuation">,</span> nums2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  	<span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment">// 当两个数组都没遍历完时，指针同步移动</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> nums1<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;</span> nums2<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> nums2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          i<span class="token operator">++</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;</span> nums2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>nums2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          j<span class="token operator">++</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>nums2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          i<span class="token operator">++</span>
+          j<span class="token operator">++</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// nums2或者nums1 留下的情况，特殊处理一下 这里就不写了</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p><strong>三数求和问题</strong></p> <p>认识了指针法之后，我们来一道数组经典中的经典题，三数求和问题，即给定一个数组，给定一个固定值，求数组中哪三个数相加能够得到我们的固定值。这道题刚入手相信大家的解法都是层层遍历嵌套，来寻找集合，但是我们使用双指针的对撞指针解法能够轻松而又优雅的解决。</p> <p>刚开始讲究循序渐进，老规矩还是先理一下解题思路。</p> <p>1.我们可以对数组进行排序，转化为有序数组</p> <p>2.固定一个数字，然后在头尾各设置一个指针，三个数相加看是否符合规定。</p> <p>3.如果三数之和比固定值大，说明右侧的数偏大了，右指针左移。</p> <p>4.如果三数之和比固定值小，说明左侧的数偏小了，左指针右移。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">threeSum</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">nums<span class="token punctuation">,</span> count</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 用于存放结果数组</span>
+    <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> 
+    <span class="token comment">// 给 nums 排序</span>
+    nums <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token operator">-</span>b
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// 缓存数组长度</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> nums<span class="token punctuation">.</span>length
+    <span class="token comment">// 注意我们遍历到倒数第三个数就足够了，因为左右指针会遍历后面两个数</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 左指针 j</span>
+        <span class="token keyword">let</span> j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> 
+        <span class="token comment">// 右指针k</span>
+        <span class="token keyword">let</span> k<span class="token operator">=</span>len<span class="token operator">-</span><span class="token number">1</span>   
+        <span class="token comment">// 如果遇到重复的数字，则跳过</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&gt;</span><span class="token number">0</span><span class="token operator">&amp;&amp;</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">===</span>nums<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">continue</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 三数之和小于count，左指针前进</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">&lt;</span>count<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                j<span class="token operator">++</span>
+               <span class="token comment">// 处理左指针元素重复的情况</span>
+               <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>k<span class="token operator">&amp;&amp;</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">===</span>nums<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    j<span class="token operator">++</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">&gt;</span>count<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment">// 三数之和大于count，右指针后退</span>
+                k<span class="token operator">--</span>
+               
+               <span class="token comment">// 处理右指针元素重复的情况</span>
+               <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>k<span class="token operator">&amp;&amp;</span>nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">===</span>nums<span class="token punctuation">[</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    k<span class="token operator">--</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 得到目标数字组合，推入结果数组</span>
+                res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                
+                <span class="token comment">// 左右指针一起前进</span>
+                j<span class="token operator">++</span>  
+                k<span class="token operator">--</span>
+               
+                <span class="token comment">// 若左指针元素重复，跳过</span>
+                <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>k<span class="token operator">&amp;&amp;</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">===</span>nums<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    j<span class="token operator">++</span>
+                <span class="token punctuation">}</span>  
+               
+               <span class="token comment">// 若右指针元素重复，跳过</span>
+               <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>k<span class="token operator">&amp;&amp;</span>nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">===</span>nums<span class="token punctuation">[</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    k<span class="token operator">--</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 返回结果数组</span>
+    <span class="token keyword">return</span> res
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div></div><p>在上面这道题中，左右指针一起从两边往中间位置相互迫近，这样的特殊双指针形态，被称为“对撞指针”。那么数组什么时候可以使用对撞指针呢？我们需要注意一个关键词：<strong>有序</strong>。</p> <p>好了，数组就先介绍到这里。之后在栈和队列中有更加深入的介绍。</p> <h3 id="数据结构-字符串"><a href="#数据结构-字符串" class="header-anchor">#</a> 数据结构-字符串</h3> <blockquote><p>字符串作为基础数据类型，相信也不用多说了，并且字符串重点难点更多在于隐式转换以及正则部分，算法涉及到的相对较少，这里也仅仅做一个而简单的介绍，用来抛砖引玉。</p></blockquote> <h4 id="指针的妙用"><a href="#指针的妙用" class="header-anchor">#</a> 指针的妙用</h4> <p><strong>字符串反转</strong></p> <p>这个属于基础类型，相信大家都是信手捏来</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 定义被反转的字符串 </span>
+<span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'abcdefg'</span>  
+<span class="token comment">// 定义反转后的字符串</span>
+<span class="token keyword">const</span> res <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p><strong>回文判断</strong></p> <p>回文判断是字符串考题中的常见题型，衍生题型也很多，我们这里用几个例子来举例。</p> <p>回文字符串，就是正着读和倒着读都一样的字符串，这道题解法有很多，比如我们上面的反转字符串解法就能解决，也可以利用双指针对撞的方式，或者利用回文字符串的对称性从中间劈开判断两边的字符是否相等，都是非常好用的方法，我们选择一种方法来实现。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 双指针判断</span>
+<span class="token keyword">function</span> <span class="token function">isPalindrome</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 缓存字符串的长度</span>
+  <span class="token keyword">const</span> len <span class="token operator">=</span> s<span class="token punctuation">.</span>length
+
+  <span class="token comment">// i、j分别为左右指针</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> len <span class="token operator">-</span> <span class="token number">1</span>
+  
+  <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 如果左右指针指向的字符不同，则不是回文，否则两个指针向中间靠拢</span>
+   	<span class="token keyword">if</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> str<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+    i<span class="token operator">++</span>
+    j<span class="token operator">--</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 利用回文对称性特性</span>
+<span class="token keyword">function</span> <span class="token function">isPalindrome</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 缓存字符串的长度</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> str<span class="token punctuation">.</span>length
+    <span class="token comment">// 遍历前半部分，判断和后半部分是否对称</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!==</span>str<span class="token punctuation">[</span>len<span class="token operator">-</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><p><strong>回文判断衍生题</strong></p> <p>下面我们来一道回文判断的衍生题。</p> <p>给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 例子：</span>
+abboa <span class="token comment">// true 删掉o 字符串变为回文</span>
+abbona <span class="token comment">// false</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>其实看完上一道题的解法，我们应该对这道题有了基本的思路，真相只有一个(bushi)，还是利用双指针，只不过要做一丢丢改造。如果碰到不是回文的情况，给他一个机会，左指针或者右指针移动一次，看是否能够维持回文的对称特性。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">validPalindrome</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 缓存字符串的长度</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> s<span class="token punctuation">.</span>length
+
+    <span class="token comment">// i、j分别为左右指针</span>
+    <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> j<span class="token operator">=</span>len<span class="token operator">-</span><span class="token number">1</span>
+    
+    <span class="token comment">// 当左右指针均满足对称时，一起向中间前进</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>j<span class="token operator">&amp;&amp;</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">===</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        i<span class="token operator">++</span> 
+        j<span class="token operator">--</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 尝试判断跳过左指针元素后字符串是否回文</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isPalindrome</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 尝试判断跳过右指针元素后字符串是否回文</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isPalindrome</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	<span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 工具方法，用于判断字符串是否回文</span>
+    <span class="token keyword">function</span> <span class="token function">isPalindrome</span><span class="token punctuation">(</span><span class="token parameter">st<span class="token punctuation">,</span> ed</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>st<span class="token operator">&lt;</span>ed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>st<span class="token punctuation">]</span> <span class="token operator">!==</span> s<span class="token punctuation">[</span>ed<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+            st<span class="token operator">++</span>
+            ed<span class="token operator">--</span>
+        <span class="token punctuation">}</span> 
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 默认返回 false</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span> 
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><p>好了，数组和字符串就暂时介绍到这里了，对于指针我们也有了基本的认识和概念。开胃菜已经差不多了，下面我们开始进入正题，去探究一下数据结构预算法的魅力所在！</p> <h3 id="数据结构-链表"><a href="#数据结构-链表" class="header-anchor">#</a> 数据结构-链表</h3> <blockquote><p>链表在数据结构中是非常重要的一个点，因为他每个节点都是按顺序链接，排列，就像一根链子连起来的一样，因此具有很强的前后关联性。可以通过简单地循环轻松进行节点的增删改查操作，是性能非常高的一种数据结构</p></blockquote> <h4 id="链表的表现形式"><a href="#链表的表现形式" class="header-anchor">#</a> 链表的表现形式</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">let</span> head <span class="token operator">=</span> <span class="token punctuation">{</span>
+  val<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  next<span class="token operator">:</span> <span class="token punctuation">{</span>
+    val<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    next<span class="token operator">:</span> <span class="token punctuation">{</span>
+      val<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      next<span class="token operator">:</span> <span class="token keyword">null</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h4 id="来一个链表生成的简易方法"><a href="#来一个链表生成的简易方法" class="header-anchor">#</a> 来一个链表生成的简易方法</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token parameter">val<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> <span class="token punctuation">(</span>val <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> val<span class="token punctuation">)</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token punctuation">(</span>next <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> next<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="链表的基础使用"><a href="#链表的基础使用" class="header-anchor">#</a> 链表的基础使用</h4> <blockquote><p>上面介绍了链表进行了基础介绍，也展示了链表的表现形式以及生成方法，相信大家对于链表已经有了一丢丢的了解，下面我们通过一些实战来看一下链表到底怎么玩</p></blockquote> <ol><li>双链表合并</li></ol> <p>最开始我们先来一个开胃菜。现在假设我们有两个链表<code>1-&gt;5-&gt;7-&gt;9</code>和<code>2-&gt;3-&gt;6-&gt;8</code>，那我们怎么把两个链表按顺序整合在一起，组成一个按顺序排列的新链表呢？大家可以先想一下解决方案。</p> <p>如果是数组结构，两个数组我们至少要进行两次循环遍历才能解决问题。但是对于链表结构而言，只需要一次遍历！大家对于链表结构的优秀性能是否有了一些认识呢，下面我们来实操一波。</p> <p>先整理一下思路，我们要将两个链表按顺序整合，如果把链表的节点想象成一个个的扣子，那么我们需要一根<strong>线</strong>来把他们按顺序穿起来，我们现在需要做的就是创造这样的一根<strong>线</strong>。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">mergeTwoLists</span><span class="token punctuation">(</span><span class="token parameter">left<span class="token punctuation">,</span> right</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+  
+  <span class="token comment">// 循环遍历知道left或者right结束为止</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>left <span class="token operator">||</span> <span class="token operator">!</span>right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span>val <span class="token operator">&gt;</span> right<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果是左侧的大 则先把右侧的“穿进去”</span>
+      cur<span class="token punctuation">.</span>next <span class="token operator">=</span> right
+      <span class="token comment">// 右侧推进一步</span>
+      right <span class="token operator">=</span> right<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 反之把左侧的“穿进去”</span>
+      cur<span class="token punctuation">.</span>next <span class="token operator">=</span> left
+      <span class="token comment">// 左侧推进一步</span>
+      left <span class="token operator">=</span> left<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// “线”推进一步</span>
+    cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+  <span class="token punctuation">}</span>
+  
+  <span class="token comment">// 如果结束后left或right还有没遍历到的，则拼到最后</span>
+  cur<span class="token punctuation">.</span>next <span class="token operator">=</span> left <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">?</span> left <span class="token operator">:</span> right
+  
+  <span class="token keyword">return</span> cur<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ol start="2"><li>链表节点的删除</li></ol> <p>上面的例子展示了链表结构的高性能。但是呢，对于他的特点，表现得还不是特别明显，那么我们再通过一个例子来展示一下链表相较于其他结构特殊的地方，也就是节点的特性。</p> <p>我们现在有一个这样的链表<code>1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;4-&gt;5-&gt;6</code>，我们要把重复的节点2，3删掉，最后新的链表为<code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6</code>。</p> <p>对于数组而言，抛开es6提供的去重方法等，常规解决方法是新建一个空数组，对原数组进行遍历，如果没有找到push，找到则继续遍历。</p> <p>那么对于链表而言我们只需要判断当前节点和下一个节点是否重复，如果重复则直接删除下一个节点，不重复继续，那么如何删除呢？我们只需要把当前节点和下下个节点连接就ok了，重复节点会被直接干掉。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">deleteNodeList</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+  
+  <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>val <span class="token operator">===</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果重复，则干掉下一个重复的节点</span>
+      cur<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 否则，推进链表继续遍历</span>
+      cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token keyword">return</span> head
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>这个例子我们展示了链表的一个特性，即节点之间的强关联性，每个节点之间都是相关的，从本质上我们只需要建立节点之间的联系，就能完成一系列的操作。这个问题其实看起来很简单，只有几行代码，是一道很经典的基础数据结构题。虽然只是利用了链表的基础特性，但是在我接触的人中，对于这道题目没思路的，写不完整的，写完跑不起来的大有人在，还是希望大家可以去多多思考、理解链表结构的本质。</p> <ol start="3"><li>链表节点的删除问题的拓展(dummy节点登场)</li></ol> <p>下面我们把这个节点的删除问题延伸一下，上面的是我们只删除重复节点，那么下面我们加一点点难度，只要有重复的，就把重复节点全部删掉。</p> <p>我们现在有一个这样的链表<code>1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;4-&gt;5-&gt;6</code>，因为2，3节点有重复，我们把重复的节点2，3全部删掉，最后新的链表为<code>1-&gt;4-&gt;5-&gt;6</code>。</p> <p>对于数组的而言(数组：请打开麦克风交流，为什么针对我？)，这个操作就就很烦，因为数组前后的值缺乏关联性，还需要在查到有重复值时候，反复遍历新数组，把重复的值干掉。无论怎么优化复杂度至少n2，一个写不好甚至还要往上。</p> <p>但是对于链表的话，这个问题就是so easy，我们只需要利用链表的节点关联特性，对上面的方法做一点点的优化。下面我们要引入一个处理链表的常用概念<code>dummy</code>节点。</p> <p><strong>dummy节点是什么</strong>：</p> <p>​	其实说白了就是一个首节点游标是空的链表。因为链表的特殊结构，他必须有一个起点，如果把起点干掉了，这个链表也会抛错。那么为了让原链表头部可以被删除，我们需要创建一个起点为空的链表来承接原链表，这就是dummy节点，下面我们用代码来直观的看一下。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">let</span> head <span class="token operator">=</span> <span class="token punctuation">{</span>
+  val<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  next<span class="token operator">:</span> <span class="token punctuation">{</span>
+    val<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    next<span class="token operator">:</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> dummy <span class="token operator">=</span> <span class="token punctuation">{</span>
+  val<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  next<span class="token operator">:</span> head
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>那么既然有了dummy节点，我们就来解决一下上面这个问题</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">deleteDuplicates</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  dummy<span class="token punctuation">.</span>next <span class="token operator">=</span> head
+  
+  <span class="token keyword">let</span> cur <span class="token operator">=</span> dummy
+  
+  <span class="token comment">// 下个节点和下下各节点都存在的时候</span>
+  <span class="token comment">// 注：这么写是因为dummy起点为空哦</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next <span class="token operator">&amp;&amp;</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val <span class="token operator">==</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 对 cur 后面的两个结点进行比较 如果相同</span>
+      <span class="token keyword">let</span> val <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val
+      <span class="token comment">// 将所有相同节点全部干掉，反复地排查后面的元素是否存在多次重复该值的情况</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next <span class="token operator">&amp;&amp;</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val <span class="token operator">==</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cur<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 两个节点不同则直接推进到下一个节点</span>
+      cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>我们通过两个例子认识了下链表的基础特性，对于简单链表也有了基本的操作能力。那么下面咱们就升级一下难度，来点有意思的，玩一玩复杂链表和环形链表，下面的内容可能有些难度，涉及到了指针(游标)、多指针、快慢指针、Map标记链表等知识，还是希望大家多花时间琢磨一下。</p> <h4 id="复杂链表的使用"><a href="#复杂链表的使用" class="header-anchor">#</a> 复杂链表的使用</h4> <p>上面我们通过几个例子，简单地认识了链表的特性和使用，因为上面的例子中的链表结构都是有序的，处理的时候省了很多事情。但是对于大多的链表结构往往是没有特定规律，那么我们怎么去处理这些链表呢？下面我们引入**指针(游标)**的概念。</p> <p>指针简单地来说起到的是标记链表位置的作用，也可以称作游标，在上面的数组介绍中，我们已经使用过指针了，下面我们利用指针来处理一下链表问题。</p> <ol><li><strong>双指针法</strong></li></ol> <blockquote><p>双指针通常的用法是，快慢指针以及对撞指针，我们的例子中均会有涉及到，这里我们先用快慢指针来处理一个简单问题</p></blockquote> <p><strong>删除某个区间的节点：</strong></p> <p>我们现在有一个链表<code>1-&gt;5-&gt;4-&gt;8-&gt;10-&gt;3-&gt;7</code>，我们现在要做的是需要删除某个区间的所有节点。这个功能对于数组很简单，对于链表直接遍历也可以处理，没什么难度。但是我们既然要玩儿花的，就用快慢指针来解决问题，当然这个有点杀鸡用牛刀，反而增加了复杂度，不过也是先体验一把。</p> <p>思路也很简单，我们知道区间是m, n，先设定一个快指针，先行n步，然后快慢指针同时前进，当慢指针前进到m步的时候，要删除的区间就出来了，我们直接干掉快慢指针中间的区域就ok，下面实现一波</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">removeNthFromEnd</span> <span class="token punctuation">(</span><span class="token parameter">head<span class="token punctuation">,</span> m<span class="token punctuation">,</span> n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 引入dummy节点</span>
+  <span class="token keyword">let</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  dummy<span class="token punctuation">.</span>next <span class="token operator">=</span> head
+	
+  <span class="token comment">// 设定快慢指针，指向dummy节点起始处</span>
+  <span class="token keyword">let</span> fast <span class="token operator">=</span> dummy
+  <span class="token keyword">let</span> slow <span class="token operator">=</span> dummy
+
+  <span class="token comment">// 快指针先行 和慢指针隔开n个位置</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>n <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next
+    n<span class="token operator">--</span>
+  <span class="token punctuation">}</span>
+	
+  <span class="token comment">// 快慢指针同时走</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>m <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next
+    slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+    m<span class="token operator">--</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 走完之后 慢指针已经停在了要删除的其实节点 连接快指针 干掉相应区间的节点</span>
+  slow<span class="token punctuation">.</span>next <span class="token operator">=</span> fast<span class="token punctuation">.</span>next
+
+  <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>看完这个例子有没有觉得指针很好玩呢？下面我们来搞一点有难度的。</p> <ol start="2"><li><strong>多指针法</strong></li></ol> <blockquote><p>顾名思义，多指针是存在多个指针，一般用来标记各个不同的点和位置，记录相应的状态，从而实现功能</p></blockquote> <p>下面我们要通过几个例子来感受一下链表中的【链】的本质。链表为何称之为链表，在我的理解看来，他就是一个<strong>链子</strong>，每个结点都连接着后续的所有结点，无论从某任意结点处断开，或者改变指针方向，都会形成新的链表。所以呢，<strong>处理链表的本质，是处理链表结点之间的指针关系</strong>。敲黑板哦！！！这个可是重点，链表的关键点全在这里。</p> <p><strong>全量反转颠倒链表(理解链表基础重点题目，要划重点哦！！！)</strong></p> <p>现在我们有一个链表1-&gt;2-&gt;3-&gt;4-&gt;5，我们要通过一个方法实现链表的完全反转，转化为5-&gt;4-&gt;3-&gt;2-&gt;1。</p> <p>因为链表无法直接从尾-&gt;头，所以最直接的办法是我们在头-&gt;尾的过程中不断地将当前节点的后续节点变为当前节点的前驱结点，即由1-&gt;2, 变为2-&gt;1。</p> <p>透过问题看本质，结合我们上面说的，其实就是把所有指针全部换一个方向就OK，把1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;null变为null&lt;-1&lt;-2&lt;-3&lt;-4&lt;-5，对比着看是不是有点意思了呢？下面我们来使用<strong>多指针法</strong>操作cur(目标节点)，pre(目标节点的前驱节点)，next(目标节点的后续节点)这三个节点来实现一下。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">reverseList</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 设定前驱节点为pre，第一次为null</span>
+  <span class="token keyword">let</span> pre <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token comment">// 目标节点为链表的第一个节点</span>
+  <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+	
+  <span class="token comment">// 当没走到最后的时候继续循环</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 先记录下当前结点所有后续节点</span>
+    <span class="token keyword">let</span> next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token comment">// 反转指针：把当前结点的指针指向前驱结点，实现相邻接点指针反转</span>
+    cur<span class="token punctuation">.</span>next <span class="token operator">=</span> pre
+    <span class="token comment">// 前驱结点变为目标结点，前驱结点相当于往前走一步</span>
+    pre <span class="token operator">=</span> cur
+    <span class="token comment">// 由于指针反转之后，链表断开为两个链表，为了目标结点能继续走下去，需要把当前结点的指针指向后续结点，目标节点相当于也往前走一步</span>
+    cur <span class="token operator">=</span> next
+  <span class="token punctuation">}</span>
+  
+  <span class="token comment">// 返回反转之后的链表</span>
+  <span class="token keyword">return</span> pre
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>这个例子看完是不是完全懵了呢...什么改变指针方向....什么前驱后续的....其实这里不理解也肯正常，反转链表是个宝库，集成了链表大多的精华部分，吃透这道题，链表这个数据结构就掌握一半了！！！真心建议大家这个题反复的去看，去细品，一定会有很大收获！！！</p> <p><strong>局部反转链表</strong></p> <p>虽然反转链表有点难，但是咱们还是要成热打铁，结合前面学到的知识，再给反转链表加一丢丢的难度。</p> <p>下面我们来实现一个局部的反转链表，即1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7，转化为1-&gt;2-&gt;6-&gt;5-&gt;4-&gt;3-&gt;7。只反转一定范围内链表结构。</p> <p>这个怎么做呢，这个题咋一看这个有点难，但是我还是希望同学们看到这个题能有点点思路。</p> <p>其实翻翻上面提到的，无非不过是快慢双指针确定范围，再来一个范围内的全量反转链表。害，说了半天，不就是个缝合怪吗？</p> <p>那么咱们下面就来治治他！</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">reverseBetween</span> <span class="token punctuation">(</span><span class="token parameter">head<span class="token punctuation">,</span> m<span class="token punctuation">,</span> n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 定义前驱结点，目标结点</span>
+  <span class="token keyword">let</span> pre<span class="token punctuation">,</span> cur<span class="token punctuation">,</span> leftHead
+	
+  <span class="token comment">// 来一个dummy结点，避免第一个结点处理不到</span>
+  <span class="token keyword">const</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  dummy<span class="token punctuation">.</span>next <span class="token operator">=</span> head
+
+  <span class="token comment">// p相当于一个指针，指向链表的位置</span>
+  <span class="token keyword">let</span> p <span class="token operator">=</span> dummy
+
+  <span class="token comment">// 先走到要反转的链表起始位置</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    p <span class="token operator">=</span> p<span class="token punctuation">.</span>next
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 记录左边缘的全部结点</span>
+  leftHead <span class="token operator">=</span> p
+
+  <span class="token comment">// 开始反转的第一个节点</span>
+  <span class="token keyword">let</span> start <span class="token operator">=</span> leftHead<span class="token punctuation">.</span>next
+
+  <span class="token comment">// 前驱节点</span>
+  pre <span class="token operator">=</span> start
+
+  <span class="token comment">// 当前节点</span>
+  cur <span class="token operator">=</span> pre<span class="token punctuation">.</span>next
+
+  <span class="token comment">// 老规矩，开始在指定范围全量反转</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> m<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    cur<span class="token punctuation">.</span>next <span class="token operator">=</span> pre
+    pre <span class="token operator">=</span> cur
+    cur <span class="token operator">=</span> next
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 将反转后的链表拼接左边缘结点</span>
+  leftHead<span class="token punctuation">.</span>next <span class="token operator">=</span> pre
+
+  <span class="token comment">// 将区间反转后start也成为了最后一个结点，然后和cur之后未反转的结点连接</span>
+  start<span class="token punctuation">.</span>next <span class="token operator">=</span> cur
+
+  <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><p>其实u1s1，这个题的意义远不如上面的一道，不过也算是一个复杂链表理解的一个强化训练吧，就不多解释啦。</p> <p><strong>环形链表</strong></p> <p>既然讲链表，那么下面咱们来解锁一个特殊姿势的链表：<strong>环形链表</strong>。</p> <p>上面是环形链表呢？顾名思义，就是环形的链表，一般的链表像蛇一样，是一条线。而环形链表像贪吃蛇咬到自己的尾巴，变成了一个环，头就是尾，尾也是头。</p> <p>说不如练，咱们先来理解一下环形链表，做道小题，判断一个链表是否为环形链表。</p> <p><strong>判断链表是否为环形链表</strong></p> <p>1.flag法</p> <p>这个思路也很简单，一直往前走，走了重复的路，就代表是环形链表了呗。所以最简单的办法只需要在节点上面打一个flag，如果是环形链表，总能再次见到他。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">startCycleFlag</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    cur<span class="token punctuation">.</span>flag <span class="token operator">=</span> <span class="token boolean">true</span>
+    cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>flag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">this head is cycle，this start is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>cur<span class="token punctuation">.</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token string">'this head is not cycle'</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>2.升级版flag法</p> <p>由于直接在链表上打flag会造成数据污染，虽然只是简单的题目，我们也要尽量很优雅的解决。</p> <p>这里我们引入Map对象，每走一步都把目标结点存入Map中，如果存入之前在Map中找到了重复结点，则证明是环形链表。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">startCycleMap</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cycleMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+  <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">1</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cycleMap<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> cur
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      cycleMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> index<span class="token punctuation">)</span>
+      cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+      i<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>3.快慢双指针法</p> <p>这个是设置两个指针，一快一慢，只要是环形链表，快指针一定能够追上慢指针。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isCycle</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> fast <span class="token operator">=</span> head
+  <span class="token keyword">let</span> slow <span class="token operator">=</span> head
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 快指针走两步 慢指针走一步</span>
+    fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+    slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+
+    <span class="token comment">// 如果相等则证明是环形链表</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fast<span class="token punctuation">.</span>val <span class="token operator">===</span> slow<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> slow
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>定位环形链表的起始位置</strong></p> <p>环形链表的常见衍生题目就是寻找环形链表的起始位置，刚才的flag法可以简单暴力的解决我们的问题。但是，我们既然要学习，还是要多玩点花样，那么就用业界公认的快慢指针法来解决这个问题。</p> <p>快慢指针虽然可以判断链表是否为环形链表，但是却无法精确的判断起始位置。所以我们要利用下快慢指针的精髓！</p> <p>1.找出环形链表的长度N，让快指针先走N步，以保证他们的间隔是整个环形链表的长度。</p> <p>2.快慢指针同时往前走，当快慢指针重合时候，即头尾重合，也就是环形链表的起点！</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 判断是否是环形链表</span>
+<span class="token keyword">function</span> <span class="token function">isCycle</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> fast <span class="token operator">=</span> head
+  <span class="token keyword">let</span> slow <span class="token operator">=</span> head
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 快指针走两步 慢指针走一步</span>
+    fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+    slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+
+    <span class="token comment">// 如果相等则证明是环形链表</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fast<span class="token punctuation">.</span>val <span class="token operator">===</span> slow<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> slow
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">function</span> <span class="token function">startCycle</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> cycle <span class="token operator">=</span> <span class="token function">isCycle</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cycle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'this head is not cycle'</span>
+  <span class="token punctuation">}</span>
+	
+  <span class="token comment">// 是环形链表 且此时快慢指针已经处在环形链表中了</span>
+  <span class="token comment">// 计算环形链表的长度</span>
+  <span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">1</span>
+  <span class="token keyword">let</span> fast <span class="token operator">=</span> cycle
+  <span class="token keyword">let</span> slow <span class="token operator">=</span> cycle<span class="token punctuation">.</span>next
+	
+  <span class="token comment">// 慢指针走，计算链表长度</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>slow<span class="token punctuation">.</span>val <span class="token operator">!==</span> fast<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+    count<span class="token operator">++</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 重置快慢指针的位置</span>
+  fast <span class="token operator">=</span> head
+  slow <span class="token operator">=</span> head
+
+  <span class="token comment">// 让快指针先行count步 保证他们间隔是一个环形链表的长度</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>count <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next
+    count<span class="token operator">--</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 快慢指针同时进行</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>fast<span class="token punctuation">.</span>val <span class="token operator">!==</span> slow<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next
+    slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+    <span class="token comment">// 相遇时，即为头尾重合的时候，也就是环形链表的起点</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fast<span class="token punctuation">.</span>val <span class="token operator">===</span> slow<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">this start is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>fast<span class="token punctuation">.</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/9/2021, 6:37:09 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/webProject/" class="prev">
+        服务端部署
+      </a></span> <span class="next"><a href="/article/">
+        个人拓展文章
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.675bda22.js" defer></script><script src="/assets/js/2.3a20e52e.js" defer></script><script src="/assets/js/8.d00f70be.js" defer></script>
+  </body>
+</html>
